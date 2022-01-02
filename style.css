@@ -1,160 +1,179 @@
 :root {
-    --blue: #0AB0D5;
+    --bg-overlay-color: 4, 3, 17;
+    --light-font-color: #eee;
+    --font-family: 'Saira', sans-serif;
     --bg-blur: 10px;
 }
 
 body {
     height: 100vh;
     width: 100vw;
+
+    font-family: var(--font-family);
+    font-weight: 200;
+
+    background: rgba(var(--bg-overlay-color), 1.0);
+
+    overflow-x: hidden;
 }
 
-.box {
-    display: flex;
-    position: relative;
-    height: 100%;
-    width: 100%;
+h2 {
+    font-size: 5rem;
+    line-height: 1.45em;
+    max-height: 1.45em;
     overflow: hidden;
-    align-items: center;
-    justify-content: center;
-    perspective: 1000px;
+
+    perspective: 8em;
+    perspective-origin: center;
+    transform-style: preserve-3d;
 }
 
-.noise {
-    position: absolute;
-    background: url(assets/noisy.png);
-    background-color: var(--blue);
-    background-size: 100%;
-    height: calc(100% + 40px);
-    width: calc(100% + 40px);
-    background-blend-mode: multiply;
-    filter: blur(var(--bg-blur));
-    -webkit-filter: blur(var(--bg-blur));
-    top: -20px;
-    left: -20px;
-    z-index: -1;
+#section-1 {
+    position: relative;
+    height: 200vh;
+    width: 100vw;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
-.overdraw {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: rgb(189 162 255 / 22%);
-    mix-blend-mode: screen;
+#section-2 {
+    position: relative;
+    height: 50vh;
+    width: 100vw;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 7.5em 3em 3em 3em;
+    background: var(--bg-overlay-color);
 }
 
-.circle {
-    --circle-radius: 250px;
-    --circle-color: rgba(255 255 255 / .5);
-
-    position: absolute;
-
-    height: var(--circle-radius);
-    width: var(--circle-radius);
-    border-radius: var(--circle-radius);
-
-    background-color: var(--circle-color);
-
-    filter: blur(calc(var(--circle-radius) / 5));
-
-    mix-blend-mode: overlay;
-
-    animation-name: glow;
-    animation-duration: 5s;
-    animation-timing-function: ease-in-out;
-    animation-play-state: running;
-    animation-iteration-count: infinite;
-    animation-fill-mode: both;
-}
-
-.pos1 {
-    top: 200px;
-    right: 400px;
-
-    --circle-radius: 250px;
-}
-
-.pos2 {
-    top: 700px;
-    left: 500px;
-
-    animation-delay: 1s;
-    animation-duration: 7s;
-    --circle-radius: 500px;
-}
-
-@keyframes glow {
-    0% {
-        transform: scale(100%);
-        background-color: rgba(255 255 255 / .25);
+@media screen and (min-width: 992px) {
+    #section-1 .content {
+        padding-left: 30%;
     }
-    50% {
-        transform: scale(200%);
-        background-color: rgba(255 255 255 / .75);
+}
+
+#section-1 h2 {
+    color: var(--light-font-color);
+    text-shadow: 0 0 20px #000;
+    animation: paragraph-intro 500ms ease-out backwards;
+    max-width: 10ch;
+}
+
+#section-1 h2:first-of-type {
+    font-weight: 400;
+}
+
+#section-1 h2:nth-of-type(1) {
+    animation-delay: 500ms;
+}
+
+#section-1 h2:nth-of-type(2) {
+    animation-delay: 700ms;
+}
+
+#section-1 h2:nth-of-type(3) {
+    animation-delay: 900ms;
+}
+
+#section-1 .bg-image {
+    --blur: blur(3px);
+    position: absolute;
+    z-index: -1;
+    
+    /* Fill whole section */
+    height: calc(100% + 10px * 2);
+    width: calc(100% + 10px * 2);
+    
+    /* Setupo background image */
+    background: url(./assets/me_large.jpg);
+    background-size: cover;
+    background-position: center;
+
+    /* Prevent white edges because of blur */
+    margin: -10px;
+
+    /* Blur the image */
+    filter: var(--blue);
+    -webkit-filter: var(--blur);
+    -o-filter: var(--blur);
+    -ms-filter: var(--blur);
+}
+
+#section-1::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+
+    /* Fill whole section */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(var(--bg-overlay-color), 0.8);
+}
+
+#section-1 .bg-color {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50%;
+    background: rgba(var(--bg-overlay-color), 1.0);
+}
+
+#section-1 .bg-color::after {    
+    position: absolute;
+    content: '';
+    z-index: 0;
+    left: 0;
+    right: 0;
+    top: -50%;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(var(--bg-overlay-color)) 100%);
+}
+
+.content {
+    position: relative;
+    padding: 7.5em 0em 0em 3em;
+}
+
+@keyframes paragraph-intro {
+    0% {
+        transform: translateY(0.25em) rotateY(-35deg) scale(1.2);
+        opacity: 0;
     }
     100% {
-        transform: scale(100%);
-        background-color: rgba(255 255 255 / .25);
+        transform: translateY(0em) rotateY(0deg) scale(1.0);
+        opacity: 1;
     }
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr) 2fr;
-    grid-template-rows: repeat(2, 1fr);
-    gap: 0.5em;
-    width: 70vw;
-    height: 30vw;
-    transform: rotatex(15deg);
+.trigger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
 }
 
-.tile {
-    position: relative;
-    transition: .2s;
-    box-shadow: 0 0 200px -40px #071c26;
-    transition-timing-function: ease-in-out;
-    transform: scale(1);
-    background-color: hsl(0deg 0% 100% / 20%);
-    -webkit-box-shadow: 0px 0px 0px -3px black;
-    box-shadow: 0px 0px 0px -3px black;
-    mix-blend-mode: screen;
-    cursor: pointer;
-    backdrop-filter: saturate(1.5) blur(10px);
+.trigger div {
+    flex: 1;
 }
 
-.tile:before {
+.content.second h2 p:nth-child(1) {
+    display: none;
+}
+
+.content.second h2:nth-child(1) p:nth-child(1) {
     display: block;
-    content: '';
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 0 0 0px rgba(255 255 255 / .25);
-    transform-origin: center;
-    transform: scale(1);
-    transition: .1s;
-    transition-timing-function: ease-in-out;
-    pointer-events: none; 
 }
 
-.tile:hover:before {
-    transform: scale(1.2);
-    box-shadow: 0 0 0 40px rgba(255 255 255 / 0);
-}
-
-.grid:hover > .tile:not(:hover) {
-    opacity: 0.5;
-}
-
-.tile:hover {
-    z-index: 1;
-    transform: scale(1.2);
-    /* -webkit-box-shadow: 0px 0px 100px -3px #000000; 
-    box-shadow: 0px 0px 1000px -3px #000000; */
-    /* border: 1px solid #149fd6; */
-    opacity: 1;
-    background-color: rgba(255 255 255 / 1)
-}
-
-.tile:nth-child(3) {
-    grid-row-start: 1;
-    grid-row-end: 3;
-    grid-column-start: 3;
+.content.second h2 p:nth-child(2) {
+    display: block;
+    opacity: 0;
+    transform: translateY(0.25em) rotateY(-35deg) scale(1.2);
 }
