@@ -177,3 +177,49 @@ h2 {
     opacity: 0;
     transform: translateY(0.25em) rotateY(-35deg) scale(1.2);
 }
+
+
+.hexagon {
+    filter: drop-shadow( 18px 0px 4px rgba(0, 0, 0, .25));
+    transform: rotateZ(90deg);
+    margin-left: -10px;
+}
+
+.hexa-grid {
+    position: absolute;
+    mix-blend-mode: multiply;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    flex-grow: 0;
+    z-index: 0;
+}
+
+.hexa-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: -22px;
+
+    position: relative;
+    z-index: -1;
+}
+
+.hexa-row:nth-child(2n) {
+    margin-left: 45px;
+}
+
+.hexagon:hover {
+    transform: scale(1.1) rotateZ(90deg);
+    background-blend-mode: overlay;
+    z-index: 1;
+    transition: .1s;
+}
+
+.hexagon:hover polygon {
+    fill: violet;
+}
