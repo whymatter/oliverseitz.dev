@@ -29,6 +29,10 @@ h1 {
     font-size: 4rem;
 }
 
+h2 {
+    font-size: 2rem;
+}
+
 h3 {
     font-size: 1.25rem;
 }
@@ -164,4 +168,95 @@ h3 {
     .background::after {
         background: rgba(255, 255, 255, 0.3);
     }
+}
+
+/* SECTION 2 */
+
+#section-2 {
+    display: grid;
+    grid-auto-rows: min-content;
+    justify-items: center;
+    padding-bottom: 2em;
+    row-gap: 3em;
+}
+
+.timebox {
+    position: relative;
+    border: 1px solid rgb(220, 220, 220);
+    background-color: rgba(250, 249, 255, 1.0);
+    width: calc(100% - 2em);
+    margin: 0 1em;
+    max-width: 1272px;
+    min-height: 10em;
+    border-radius: 13px;
+}
+
+.timebox::before {
+    --width: 0.75em;
+    content: '';
+    top: 0;
+    position: absolute;
+    width: var(--width);
+    height: var(--width);
+    border-radius: 1em;
+    background-color: rgba(81, 43, 212, 1.0);
+    z-index: 1;
+    transform: translateY(-50%);
+    left: calc(50% - var(--width) / 2);
+    box-shadow: 0 0 0 5px rgba(81, 43, 212, .2);
+}
+
+.timebox::after {
+    --height: 3.1em;
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: var(--height);
+    border-radius: 1em;
+    background-color: rgb(121, 121, 121);
+    z-index: 1;
+    transform: translateY(calc(-1 * var(--height)));
+    left: calc(50% - 0.5px);
+    z-index: -1;
+}
+
+.timebox .timebox-content {
+    position: relative;
+    padding: 1em 2em;
+}
+
+.timebox .timebox-date {
+    position: relative;
+    transform: translateY(-50%);
+    inset: auto auto auto 3em;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.timebox-background {
+    position: absolute;
+    inset: 0 0 0 0;
+    overflow: hidden;
+}
+
+.timebox-background::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 0 0;
+    background-color: rgba(250, 249, 255, .8);
+    backdrop-filter: blur(5px);
+    border-radius: 13px;
+}
+
+.timebox-background img {
+    height: 80%;
+    position: absolute;
+    inset: 50% 0 0 auto;
+    transform: translateX(40%) translateY(-50%);
+    object-fit: contain;
+}
+
+#section-2 .timebox:first-of-type::after {
+    --height: 2em;
 }
