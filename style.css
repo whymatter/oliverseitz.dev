@@ -6,220 +6,162 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
-    width: 100vw;
-
     font-family: var(--font-family);
     font-weight: 200;
-
-    background: rgba(var(--bg-overlay-color), 1.0);
-
     overflow-x: hidden;
 }
 
-h2 {
-    font-size: 5rem;
-    line-height: 1.45em;
-    max-height: 1.45em;
-    overflow: hidden;
-
-    perspective: 8em;
-    perspective-origin: center;
-    transform-style: preserve-3d;
+.wrapper {
+    width: 100%;
+    max-width: 1920px;
 }
 
 #section-1 {
     position: relative;
-    height: 200vh;
-    width: 100vw;
-    overflow: hidden;
-    box-sizing: border-box;
+    height: 100vh;
 }
 
-#section-2 {
+h1 {
+    font-size: 4rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+.technology-map {
     position: relative;
-    height: 50vh;
-    width: 100vw;
+    font-size: 6.25rem;
+    width: min(100vw + 0.5em, 7em);
     overflow: hidden;
-    box-sizing: border-box;
-    padding: 7.5em 3em 3em 3em;
-    background: var(--bg-overlay-color);
+    height: 9em;
 }
 
-@media screen and (min-width: 992px) {
-    #section-1 .content {
-        padding-left: 30%;
-    }
+.content .technology-map {
+    display: none;
 }
 
-#section-1 h2 {
-    color: var(--light-font-color);
-    text-shadow: 0 0 20px #000;
-    animation: paragraph-intro 500ms ease-out backwards;
-    max-width: 10ch;
-}
-
-#section-1 h2:first-of-type {
-    font-weight: 400;
-}
-
-#section-1 h2:nth-of-type(1) {
-    animation-delay: 500ms;
-}
-
-#section-1 h2:nth-of-type(2) {
-    animation-delay: 700ms;
-}
-
-#section-1 h2:nth-of-type(3) {
-    animation-delay: 900ms;
-}
-
-#section-1 .bg-image {
-    --blur: blur(3px);
+.background .technology-map {
     position: absolute;
-    z-index: -1;
-    
-    /* Fill whole section */
-    height: calc(100% + 10px * 2);
-    width: calc(100% + 10px * 2);
-    
-    /* Setupo background image */
-    background: url(./assets/me_large.jpg);
-    background-size: cover;
-    background-position: center;
-
-    /* Prevent white edges because of blur */
-    margin: -10px;
-
-    /* Blur the image */
-    filter: var(--blue);
-    -webkit-filter: var(--blur);
-    -o-filter: var(--blur);
-    -ms-filter: var(--blur);
-}
-
-#section-1::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-
-    /* Fill whole section */
     top: 0;
     left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(var(--bg-overlay-color), 0.8);
+    transform: scale(1) translateX(-0.5em);
 }
 
-#section-1 .bg-color {
+.logo-hexagon {
     position: absolute;
-    z-index: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 50%;
-    background: rgba(var(--bg-overlay-color), 1.0);
 }
 
-#section-1 .bg-color::after {    
+.hex-size-small {
+    width: 1em;
+    height: auto;
+}
+
+.hex-size-medium {
+    width: 2.2em;
+    height: auto;
+}
+
+.hex-size-large {
+    width: 3.5em;
+    height: auto;
+}
+
+#logo-terraform {
+    inset: 0.125em 0 0 1.25em;
+}
+
+#logo-graphql {
+    inset: 0.125em 0 0 2.25em;
+}
+
+#logo-cpp {
+    inset: 0.95em 0 0 1.125em;
+}
+
+#logo-golang {
+    inset: 2.7em 0 0 0em;
+}
+
+#logo-angular {
+    inset: 2.7em 0 0 2.25em;
+}
+
+#logo-dotnet {
+    inset: 4.5em 0 0 0.475em;
+}
+
+#logo-react {
+    inset: 0.025em 0 0 3.25em;
+}
+
+#logo-azure {
+    inset: 4.5em 0 0 3.75em;
+}
+
+.background {
     position: absolute;
+    inset: 0 0 0 0;
+}
+
+.background::after {
     content: '';
-    z-index: 0;
-    left: 0;
-    right: 0;
-    top: -50%;
-    height: 50%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(var(--bg-overlay-color)) 100%);
+    position: absolute;
+    inset: 0 0 0 0;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(11px);
 }
 
 .content {
     position: relative;
-    padding: 7.5em 0em 0em 3em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
 }
 
-@keyframes paragraph-intro {
-    0% {
-        transform: translateY(0.25em) rotateY(-35deg) scale(1.2);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0em) rotateY(0deg) scale(1.0);
-        opacity: 1;
-    }
+.name-box {
+    position: relative;
+    width: fit-content;
+    align-self: center;
+    justify-self: center;
+    grid-column: 1 / 3;
+    
+    border-radius: 1em;
+    border: 1px solid rgba(0, 0, 0, .15);
+    background: rgba(255, 255, 255, 0.5);
+    padding: 2em 1em 2em 1em;
 }
 
-.trigger {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    display: flex;
-    flex-direction: column;
-}
-
-.trigger div {
-    flex: 1;
-}
-
-.content.second h2 p:nth-child(1) {
+.name-box .middle-name {
     display: none;
 }
 
-.content.second h2:nth-child(1) p:nth-child(1) {
-    display: block;
-}
+@media only screen and (min-width: 992px) {
 
-.content.second h2 p:nth-child(2) {
-    display: block;
-    opacity: 0;
-    transform: translateY(0.25em) rotateY(-35deg) scale(1.2);
-}
+    .name-box {
+        grid-column: 2;
+        border: none;
+        background: none;
+        padding: unset;
+    }
 
+    .content .technology-map {
+        display: block;
+    }
 
-.hexagon {
-    filter: drop-shadow( 18px 0px 4px rgba(0, 0, 0, .25));
-    transform: rotateZ(90deg);
-    margin-left: -10px;
-}
+    .background .technology-map {
+        transform: scale(1.25);
+    }
 
-.hexa-grid {
-    position: absolute;
-    mix-blend-mode: multiply;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-    flex-grow: 0;
-    z-index: 0;
-}
+    .name-box .middle-name {
+        display: inline;
+    }
 
-.hexa-row {
-    display: flex;
-    flex-direction: row;
-    margin-top: -22px;
-
-    position: relative;
-    z-index: -1;
-}
-
-.hexa-row:nth-child(2n) {
-    margin-left: 45px;
-}
-
-.hexagon:hover {
-    transform: scale(1.1) rotateZ(90deg);
-    background-blend-mode: overlay;
-    z-index: 1;
-    transition: .1s;
-}
-
-.hexagon:hover polygon {
-    fill: violet;
+    .background::after {
+        background: rgba(255, 255, 255, 0.3);
+    }
 }
