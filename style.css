@@ -181,14 +181,37 @@ h3 {
 }
 
 .timebox {
+    --border-color: rgb(220, 220, 220);
     position: relative;
-    border: 1px solid rgb(220, 220, 220);
+    border: 1px solid var(--border-color);
     background-color: rgba(250, 249, 255, 1.0);
     width: calc(100% - 2em);
     margin: 0 1em;
     max-width: 1272px;
     min-height: 10em;
     border-radius: 13px;
+    z-index: 0;
+    transition: .2s ease-in-out;
+}
+
+.timebox:hover {
+    --border-color: rgb(160, 160, 160);
+    transform-origin: center center;
+    box-shadow: -2em 0 30px 0 rgba(81, 43, 212, .1);
+}
+
+.timebox:hover::after {    
+    --height: 3.2em;
+}
+
+.timebox:nth-of-type(2n):hover {
+    transform: perspective(800px) rotateX(5deg);
+    box-shadow: 0 1em 30px 0 rgba(81, 43, 212, .1);
+}
+
+.timebox:nth-of-type(2n + 1):hover {
+    transform: perspective(800px) rotateX(-5deg);
+    box-shadow: 0 -1em 30px 0 rgba(81, 43, 212, .1);
 }
 
 .timebox::before {
@@ -203,7 +226,23 @@ h3 {
     z-index: 1;
     transform: translateY(-50%);
     left: calc(50% - var(--width) / 2);
-    box-shadow: 0 0 0 5px rgba(81, 43, 212, .2);
+    box-shadow: 0 0 0 5px rgba(81, 43, 212, .3);
+    animation: timebox-dot-glow;
+    animation-duration: 4s;
+    animation-timing-function: cubic-bezier(0.39, 0.58, 0.57, 1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes timebox-dot-glow {
+    0% {
+        box-shadow: 0 0 0 5px rgba(81, 43, 212, .3);
+    }
+    50% {
+        box-shadow: 0 0 0 9px rgba(81, 43, 212, .2);
+    }
+    100% {
+        box-shadow: 0 0 0 5px rgba(81, 43, 212, .3);
+    }
 }
 
 .timebox::after {
