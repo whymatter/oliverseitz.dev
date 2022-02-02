@@ -249,13 +249,18 @@ h3 {
     width: var(--width);
     height: var(--height);
     border-radius: .25em;
-    background-color: rgba(81, 43, 212, 1.0);
     z-index: 1;
+    background-color: rgb(49, 23, 144);
     box-shadow: 0 0 0 2px rgba(81, 43, 212, .3);
     animation: timebox-dot-glow;
     animation-duration: 4s;
     animation-timing-function: cubic-bezier(0.39, 0.58, 0.57, 1);
     animation-iteration-count: infinite;
+    transition: background-color .2s;
+}
+
+.timebox:hover .timebox-date {
+    background-color: rgba(81, 43, 212, 1.0);
 }
 
 @keyframes timebox-dot-glow {
@@ -310,4 +315,61 @@ h3 {
 
 #section-2 .timebox:first-of-type::after {
     --height: 2em;
+}
+
+/* SECTION 3 */
+
+.hex-tile {
+    position: relative;
+    width: 24em;
+    height: 24em;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.hex-tile-background {
+    position: absolute;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.hex-tile-content {
+    position: absolute;
+    display: grid;
+    justify-items: center;
+    row-gap: 1.5em;
+    grid-template-rows: min-content 1fr min-content;
+    color: rgba(255, 255, 255, 1);
+    width: 76%;
+    top: 26%;
+    height: 57%;
+	text-align: justify;
+	text-align-last: center;
+}
+
+.hex-tile-content h3 {
+    font-weight: 500;
+}
+
+.hex-tile-abstract {
+    font-weight: 400;
+}
+
+.hex-tile-content a {
+    position: relative;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 500;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.hex-tile-content a::before {
+    position: absolute;
+    content: '';
+    height: 1px;
+    background-color: rgba(255, 255, 255, 1);
+    inset: auto 0 -2px 0;
 }
