@@ -1,8 +1,27 @@
 import Head from 'next/head'
 import ArticleTile from '../components/ArticleTile/ArticleTile'
 import TimeBox from '../components/TimeBox/TimeBox'
+import articleData from '../data/article'
+import timelineData from '../data/timeline'
 
 export default function Home() {
+    const articles = articleData;
+
+    const articleRows = [[]];
+
+    // Split articles into rows of 3 articles
+    for (let i = 0; i < articles.length; i++) {
+        const article = articles[i];
+
+        // Add new row if last row if full
+        if (articleRows[articleRows.length - 1].length === 3) {
+            articleRows.push([])
+        }
+
+        // Add article to last row
+        articleRows[articleRows.length - 1].push(article);
+    }
+
     return (
         <>
             <Head>
@@ -45,31 +64,7 @@ export default function Home() {
                     <div id="timeline-wrapper" className="section-wrapper">
                         <h2>Timeline</h2>
                         <div className="timeline-line"></div>
-                        <TimeBox
-                            logo="logos-company/logo-digatus.png"
-                            date="jetzt"
-                            content="Lorem ipsum dolor sit amet"
-                        />
-                        <TimeBox
-                            logo="logos-company/logo-bmw.png"
-                            date="12-2018"
-                            content="Lorem ipsum dolor sit amet"
-                        />
-                        <TimeBox
-                            logo="logos-company/logo-xitaso.png"
-                            date="03-2018"
-                            content="Lorem ipsum dolor sit amet"
-                        />
-                        <TimeBox
-                            logo="logos-company/logo-4sellers.png"
-                            date="01-2015"
-                            content="Lorem ipsum dolor sit amet"
-                        />
-                        <TimeBox
-                            logo="logos-company/logo-4sellers.png"
-                            date="08-2015"
-                            content="Lorem ipsum dolor sit amet"
-                        />
+                        {timelineData.map(o => <TimeBox {...o} />)}
                     </div>
                 </section>
 
@@ -81,76 +76,20 @@ export default function Home() {
                         <div className="hex-tile-wrapper">
                             <div className="background">
                                 <div className="hex-tile-rows">
-                                    <div className="hex-tile-row">
-                                        <ArticleTile
-                                            color="hsl(195deg 93% 48%)"
-                                            headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                            abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                        />
-                                        <ArticleTile
-                                            color="hsl(94deg 93% 38%)"
-                                            headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                            abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                        />
-                                        <ArticleTile
-                                            color="hsl(272deg 93% 48%)"
-                                            headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                            abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                        />
-                                    </div>
-                                    <div className="hex-tile-row">
-                                        <ArticleTile
-                                            color="hsl(36deg 93% 48%)"
-                                            headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                            abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                        />
-                                        <ArticleTile
-                                            color="hsl(328deg 93% 48%)"
-                                            headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                            abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                        />
-                                        <ArticleTile
-                                            color="hsl(195deg 93% 48%)"
-                                            headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                            abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                        />
-                                    </div>
+                                    {articleRows.map(row =>
+                                        <div className="hex-tile-row">
+                                            {row.map(article => <ArticleTile {...article} />)}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                             <div className="hex-tile-rows">
-                                <div className="hex-tile-row">
-                                    <ArticleTile
-                                        color="hsl(195deg 93% 48%)"
-                                        headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                        abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                    />
-                                    <ArticleTile
-                                        color="hsl(94deg 93% 38%)"
-                                        headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                        abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                    />
-                                    <ArticleTile
-                                        color="hsl(272deg 93% 48%)"
-                                        headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                        abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                    />
-                                </div>
-                                <div className="hex-tile-row">
-                                    <ArticleTile
-                                        color="hsl(36deg 93% 48%)"
-                                        headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                        abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                    />
-                                    <ArticleTile
-                                        color="hsl(328deg 93% 48%)"
-                                        headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                        abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                    />
-                                    <ArticleTile
-                                        color="hsl(195deg 93% 48%)"
-                                        headline="Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-                                        abstract="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur mollis magna sed consectetur. Integer leo lorem, maximus ut ante tincidunt, luctus feugiat urna. Orci varius natoque."
-                                    />
+                                <div className="hex-tile-rows">
+                                    {articleRows.map(row =>
+                                        <div className="hex-tile-row">
+                                            {row.map(article => <ArticleTile {...article} />)}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
