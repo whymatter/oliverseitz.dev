@@ -78,7 +78,7 @@ body::-webkit-scrollbar-thumb:hover {
     border: 10px solid #fff;
 }
 
-/* SECTION 2 */
+/* SECTION 1 */
 
 #section-1 {
     height: 100vh;
@@ -105,6 +105,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .logo-hexagon {
     position: absolute;
+    animation: shake-vertical 3s ease-in-out 0s infinite;
 }
 
 .hex-size-small {
@@ -122,36 +123,56 @@ body::-webkit-scrollbar-thumb:hover {
     height: auto;
 }
 
+@keyframes shake-vertical {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 #logo-terraform {
     inset: 0.25em 0 0 1.25em;
+    animation-delay: .05s;
 }
 
 #logo-graphql {
     inset: 0.25em 0 0 2.5em;
+    animation-delay: .1s;
 }
 
 #logo-cpp {
     inset: 1.25em 0 0 1.275em;
+    animation-delay: .15s;
 }
 
 #logo-golang {
     inset: 3.35em 0 0 0.05em;
+    animation-delay: .2s;
 }
 
 #logo-angular {
     inset: 3.35em 0 0 2.50em;
+    animation-delay: .25s;
 }
 
 #logo-dotnet {
     inset: 5.5em 0 0 0.60em;
+    animation-delay: .3s;
 }
 
 #logo-react {
     inset: 0.125em 0 0 3.75em;
+    animation-delay: .35s;
 }
 
 #logo-azure {
     inset: 4.5em 0 0 3.75em;
+    animation-delay: .4s;
 }
 
 #section-1 .background {
@@ -356,7 +377,7 @@ body::-webkit-scrollbar-thumb:hover {
     height: 80%;
     position: absolute;
     inset: 50% 0 0 auto;
-    transform: translateX(40%) translateY(-50%);
+    transform: translateX(10%) translateY(-50%);
     object-fit: contain;
 }
 
@@ -395,6 +416,7 @@ body::-webkit-scrollbar-thumb:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1em;
 }
 
 .hex-tile-row {
@@ -407,6 +429,7 @@ body::-webkit-scrollbar-thumb:hover {
 @media only screen and (min-width: 1270px) {
     .hex-tile-rows {        
         align-items: flex-start;
+        gap: 0;
     }
 
     .hex-tile-row {
@@ -424,6 +447,10 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 @media only screen and (min-width: 740px) and (max-width: 1269px) {
+    .hex-tile-rows {        
+        gap: 0;
+    }
+
     .hex-tile-row {
         grid-template-columns: repeat(2, min-content);
         gap: 0;
@@ -509,7 +536,7 @@ body::-webkit-scrollbar-thumb:hover {
     inset: auto 0 -2px 0;
 }
 
-.hex-tile.blue {
+/* .hex-tile.blue {
     color: hsl(195deg 93% 48%);
 }
 
@@ -527,4 +554,4 @@ body::-webkit-scrollbar-thumb:hover {
 
 .hex-tile.pink {
     color: hsl(328deg 93% 48%);
-}
+} */
