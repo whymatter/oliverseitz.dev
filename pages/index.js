@@ -27,8 +27,8 @@ export default function Home() {
             <Head>
                 <title>Oliver Helmut Seitz | Software Developer, Azure, Kubernetes</title>
             </Head>
-            <div className="wrapper">
-                <section id="section-1">
+            <section id="section-1">
+                <div className="wrapper">
                     <div className="background">
                         <div className="technology-map">
                             <object id="logo-dotnet" className="logo-hexagon hex-size-large" data="logos-tech/logo-dotnet.svg" type="image/svg+xml"></object>
@@ -57,19 +57,23 @@ export default function Home() {
                             <h3>Developer | Azure | Kubernetes</h3>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section id="section-2">
-                    <div className="spacer-15"></div>
+            <section id="section-2">
+                <div className="spacer-15"></div>
+                <div className="wrapper wrapper-center">
                     <div id="timeline-wrapper" className="section-wrapper">
                         <h2>Timeline</h2>
                         <div className="timeline-line"></div>
                         {timelineData.map(o => <TimeBox {...o} />)}
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section id="section-3">
-                    <div className="spacer-15"></div>
+            <section id="section-3">
+                <div className="spacer-15"></div>
+                <div className="wrapper wrapper-center">
                     <div className="section-wrapper">
                         <h2>Articles</h2>
                         <div className="spacer-5"></div>
@@ -94,11 +98,46 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                </section>
-                <section id="section-4">
+                </div>
+                <div className="spacer-15"></div>
+            </section>
 
-                </section>
-            </div>
+            <section id="section-4">
+                <div className="wrapper wrapper-center">
+                    <div className="footer-wrapper">
+                        <div className="footer-grid">
+                            <div>
+                                <h3>Rechtliche Informationen</h3>
+                                <ul className="legal-links">
+                                    <li><a href="/impressum">Impressum</a></li>
+                                    <li><a href="/privacy">Datenschutz</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>In Kontakt bleiben</h3>
+                                <div className="logo-row">
+                                    <a href="https://github.com/whymatter">
+                                        <img src="logos-brands/logo-github.webp"></img>
+                                    </a>
+                                    <a href="https://www.instagram.com/_seitzoliver">
+                                        <img src="logos-brands/logo-instagram.webp"></img>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/oliver-seitz/">
+                                        <img src="logos-brands/logo-linkedin.webp"></img>
+                                    </a>
+                                    <a href="https://twitter.com/whymatter_">
+                                        <img src="logos-brands/logo-twitter.webp"></img>
+                                    </a>
+                                    <a href="https://medium.com/@why_matter">
+                                        <img src="logos-brands/logo-medium.webp"></img>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p className="copyright">Copyright © 2022 oliverseitz.dev</p>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }
