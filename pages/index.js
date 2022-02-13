@@ -89,8 +89,8 @@ export default function Home() {
                             </div>
                             <div className="hex-tile-rows">
                                 <div className="hex-tile-rows">
-                                    {articleRows.map(row =>
-                                        <div className="hex-tile-row">
+                                    {articleRows.map((row, i) =>
+                                        <div className="hex-tile-row" style={{ zIndex: articleRows.length - i }}>
                                             {row.map(article => <ArticleTile {...article} />)}
                                         </div>
                                     )}
@@ -134,7 +134,7 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                        <p className="copyright">Copyright © 2022 oliverseitz.dev</p>
+                        <p className="copyright">Copyright © 2022 - oliverseitz.dev</p>
                     </div>
                 </div>
             </section>

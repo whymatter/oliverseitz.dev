@@ -1,4 +1,4 @@
-const ArticleTile = ({ color, headline, abstract }) => {
+const ArticleTile = ({ color, headline, abstract, link }) => {
     return (
         <div className="hex-tile" style={{ color: color }}>
             <div className="hex-tile-background">
@@ -13,7 +13,7 @@ const ArticleTile = ({ color, headline, abstract }) => {
                 <div className="hex-tile-abstract">
                     {abstract}
                 </div>
-                <a className="hex-tile-action" href="#">Artikel lesen</a>
+                <a className="hex-tile-action" href={link}>Artikel lesen</a>
             </div>
         </div>
     );

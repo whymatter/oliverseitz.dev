@@ -445,7 +445,11 @@ body::-webkit-scrollbar-thumb:hover {
   }
 
   .hex-tile-row:nth-of-type(2n) {
-    margin: -5em 0 0 11em;
+    margin-inline-start: 11em;
+  }
+
+  .hex-tile-row:not(:first-of-type) {
+    margin-block-start: -5em;
   }
 
   #section-3 .background {
@@ -467,8 +471,8 @@ body::-webkit-scrollbar-thumb:hover {
     grid-template-columns: repeat(1, min-content);
   }
 
-  .hex-tile-row:nth-of-type(2n) {
-    margin: -5em 0 0 0;
+  .hex-tile-row:not(:first-of-type) {
+    margin-block-start: -5em;
   }
 
   .hex-tile-row .hex-tile:nth-of-type(3) {
