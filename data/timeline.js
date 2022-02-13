@@ -15,6 +15,11 @@ const timelimeData = [
         "content": "Lorem ipsum dolor sit amet"
     },
     {
+        "logo": "logos-company/logo-segmueller.png",
+        "date": "12-2016",
+        "content": "Lorem ipsum dolor sit amet"
+    },
+    {
         "logo": "logos-company/logo-4sellers.png",
         "date": "08-2015",
         "content": "Lorem ipsum dolor sit amet"

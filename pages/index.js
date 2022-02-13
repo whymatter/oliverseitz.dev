@@ -1,8 +1,10 @@
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
 import ArticleTile from '../components/ArticleTile/ArticleTile'
 import TimeBox from '../components/TimeBox/TimeBox'
 import articleData from '../data/article'
 import timelineData from '../data/timeline'
+import { gsap } from "gsap";
 
 export default function Home() {
     const articles = articleData;
@@ -21,6 +23,45 @@ export default function Home() {
         // Add article to last row
         articleRows[articleRows.length - 1].push(article);
     }
+
+    useEffect(() => {
+        const { ScrollTrigger } = require("gsap/ScrollTrigger");
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to(".name-box", {
+            scrollTrigger: {
+                trigger: ".name-box",
+                scrub: true,
+                start: "center center",
+                end: "bottom top"
+            },
+            transform: "translateY(40vh)"
+        });
+
+        gsap.utils.toArray(".timebox-wrapper").forEach(timebox => {
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: timebox,
+                    start: "top 70%",
+                    end: "bottom top",
+                    scrub: true
+                }
+            })
+                .fromTo(timebox.querySelectorAll(".timebox-logo"),
+                    { transform: 'translate(10%, -80%)' },
+                    { transform: 'translate(10%, 40%)' });;
+
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: timebox,
+                    start: "top 85%",
+                    end: "top 75%",
+                    scrub: true
+                }
+            }).fromTo(timebox, { opacity: 0 }, { opacity: 1 });
+        });
+
+    }, []);
 
     return (
         <>
@@ -64,6 +105,7 @@ export default function Home() {
                 <div className="spacer-15"></div>
                 <div className="wrapper wrapper-center">
                     <div id="timeline-wrapper" className="section-wrapper">
+                        <div className="timeline-glow"></div>
                         <h2>Timeline</h2>
                         <div className="timeline-line"></div>
                         {timelineData.map(o => <TimeBox {...o} />)}
