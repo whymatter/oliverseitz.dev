@@ -23,28 +23,28 @@ const articleData = [
     {
         "color": "hsl(272deg 93% 48%)",
         "date": "2020-03-27",
-        "headline": "(4) Warum ist SCRUM überhaupt agil?",
+        "headline": "Warum ist SCRUM überhaupt agil?",
         "abstract": "Die etablierte SCRUM Methodik beschreibt eine Vorgehensweise, die konform mit dem agilen Mindset ist. In diesem Artikel möchte ich daher eine Brücke schlagen zwischen Manifest für agile Softwareentwicklung und SCRUM.",
         "link": "https://www.digatus.de/warum-ist-scrum-ueberhaupt-agil"
     },
     {
         "color": "hsl(36deg 93% 48%)",
         "date": "2020-02-20",
-        "headline": "(3) Wie wird agile Entwicklung gemessen?",
+        "headline": "Wie wird agile Entwicklung gemessen?",
         "abstract": "Dieser Teil der Artikelreihe widmet sich vor allem der Messbarkeit agiler Projekte durch die Analyse von KPIs und befasst sich darüber hinaus mit der Bedeutung eines konstanten Tempos sowie technischer Exzellenz bei der Entwicklung.",
         "link": "https://www.digatus.de/wie-wird-agile-entwicklung-gemessen"
     },
     {
         "color": "hsl(328deg 93% 48%)",
         "date": "2019-12-06",
-        "headline": "(2) Agile Zusammenarbeit im Entwickler Alltag.",
+        "headline": "Agile Zusammenarbeit im Entwickler Alltag.",
         "abstract": "Der zweite Teil beschäftigt sich primär mit der Frage, was agiles Arbeiten für die tägliche Zusammenarbeit bedeutet, insbesondere für die interne und externe Kommunikation.",
         "link": "https://www.digatus.de/agile-zusammenarbeit-im-entwickler-alltag"
     },
     {
         "color": "hsl(195deg 93% 48%)",
         "date": "2019-11-15",
-        "headline": "(1) Der Weg zur agilen Entwicklung.",
+        "headline": "Der Weg zur agilen Entwicklung.",
         "abstract": "SCRUM ist derzeit in aller Munde und erfreut sich größter Beliebtheit. Die folgende Artikelreihe wird die Hintergründe agiler Prozesse verdeutlichen, und mit den üblichsten Fehlinterpretationen aufräumen.",
         "link": "https://www.digatus.de/der-weg-zur-agilen-entwicklung"
     },
